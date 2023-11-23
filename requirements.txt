@@ -1,3 +1,4 @@
+gunicorn==21.2.0
 Flask==2.0.1
 youtube-transcript-api==0.4.1
 pyperclip==1.8.2
