@@ -25,7 +25,6 @@ def transcribe():
         return render_template('error.html', error_message='Invalid YouTube URL')
 
 def extract_video_id(video_url):
-
     pattern = re.compile(r'(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})')
     match = pattern.match(video_url)
     if match:
@@ -33,29 +32,25 @@ def extract_video_id(video_url):
     else:
         return None
 
-
-
-
-
 def get_transcript(video_id):
     transcript = YouTubeTranscriptApi.get_transcript(video_id)
 
-  
-    downloads_folder = os.path.join(os.path.expanduser('~'), 'Downloads')
-    file_path = os.path.join(downloads_folder, f"transcript_{video_id}.txt")
+    # Adjust the directory to a suitable location on Render.com
+    render_directory = '/path/to/render/directory'
+    
+    # Create the directory if it doesn't exist
+    os.makedirs(render_directory, exist_ok=True)
+
+    file_path = os.path.join(render_directory, f"transcript_{video_id}.txt")
 
     with open(file_path, 'w', encoding='utf-8') as file:
         for entry in transcript:
             file.write(f"{entry['text']}\n")
 
- 
     clipboard_text = "\n".join([f"{entry['text']}" for entry in transcript])
     pyperclip.copy(clipboard_text)
 
     return transcript
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
