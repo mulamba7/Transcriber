@@ -87,14 +87,15 @@
         });
 
         // Create a Blob containing the transcript text
-var blob = new Blob([textarea.value], { type: 'text/plain' });
+        var blob = new Blob([textarea.value], { type: 'text/plain' });
 
-// Create a download link
-var downloadLink = document.createElement('a');
-downloadLink.href = URL.createObjectURL(blob);
-downloadLink.download = 'transcript.txt';
-downloadLink.click();
-
+        // Create a download link and trigger the download
+        var downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(blob);
+        downloadLink.download = 'transcript.txt';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
     }
 </script>
 
