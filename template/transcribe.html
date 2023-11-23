@@ -68,22 +68,33 @@
             {% endfor %}
         </ul>
      
-        <button class="btn btn-success" onclick="showAlert()">Copy to clipboard</button>
+       <button class="btn btn-success" onclick="copyAndDownload()">Copy to clipboard and Download</button>
 
-        <script>
-            function showAlert() {
-                // Use SweetAlert to display a custom alert popup
-                Swal.fire({
-                    title: 'Transcript Copied!',
-                    text: 'The transcript has been copied to the clipboard.',
-                    icon: 'success',
-                    confirmButtonColor: '#4caf50',
-                    confirmButtonText: 'OK'
-                });
-            }
-        </script>
+<script>
+    function copyAndDownload() {
+        // Copy the transcript to clipboard
+        var textarea = document.querySelector('textarea');
+        textarea.select();
+        document.execCommand('copy');
+
+        // Use SweetAlert to display a custom alert popup
+        Swal.fire({
+            title: 'Transcript Copied!',
+            text: 'The transcript has been copied to the clipboard.',
+            icon: 'success',
+            confirmButtonColor: '#4caf50',
+            confirmButtonText: 'OK'
+        });
+
+        // Trigger the download link
+        var downloadLink = document.createElement('a');
+        downloadLink.href = '{{ url_for("download", video_id=video_id) }}';
+        downloadLink.download = 'transcript.txt';
+        downloadLink.click();
+    }
+</script>
+
         
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
