@@ -1,0 +1,89 @@
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #1c87c9;
+  border: none;
+  color: white;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #1475b9;
+}
+url-input {
+  width: 1%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+body {
+  background-color: black;
+}
+body {
+  color: white;
+}
+body {
+  text-align: center;
+}
+p {
+  text-indent: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#transcript {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  overflow-y: auto;
+  max-height: 500px;
+}
+container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+text {
+  margin: 0;
+}
+
+transcript-line {
+  margin-bottom: 5px;
+}
+
+.transcript-timestamp {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.transcript-text {
+  font-size: 16px;
+}

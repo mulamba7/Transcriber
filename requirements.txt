@@ -1,0 +1,4 @@
+Flask==3.0.0
+pip install youtube_transcript_api [Just Incase Updated Version fails use : youtube_transcript_api==0.4.1]
+pip install pyperclip [Just Incase Updated Version fails use : pyperclip==1.8.2]
+pip install regex
