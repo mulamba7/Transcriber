@@ -35,8 +35,8 @@ def extract_video_id(video_url):
 def get_transcript(video_id):
     transcript = YouTubeTranscriptApi.get_transcript(video_id)
 
-    # Adjust the directory to a suitable location on Render.com
-    render_directory = '/path/to/render/directory'
+    # Use the /tmp directory which is often writable on many platforms
+    render_directory = '/tmp/render_directory'
     
     # Create the directory if it doesn't exist
     os.makedirs(render_directory, exist_ok=True)
