@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from youtube_transcript_api import YouTubeTranscriptApi
-import pyperclip
 import re
 import os
 
@@ -47,9 +46,7 @@ def get_transcript(video_id):
         for entry in transcript:
             file.write(f"{entry['text']}\n")
 
-    clipboard_text = "\n".join([f"{entry['text']}" for entry in transcript])
-    pyperclip.copy(clipboard_text)
-
+    # Return the transcript as plain text
     return transcript
 
 if __name__ == '__main__':
