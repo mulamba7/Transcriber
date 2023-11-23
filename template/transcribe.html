@@ -86,11 +86,15 @@
             confirmButtonText: 'OK'
         });
 
-        // Trigger the download link
-        var downloadLink = document.createElement('a');
-        downloadLink.href = '{{ url_for("download", video_id=video_id) }}';
-        downloadLink.download = 'transcript.txt';
-        downloadLink.click();
+        // Create a Blob containing the transcript text
+var blob = new Blob([textarea.value], { type: 'text/plain' });
+
+// Create a download link
+var downloadLink = document.createElement('a');
+downloadLink.href = URL.createObjectURL(blob);
+downloadLink.download = 'transcript.txt';
+downloadLink.click();
+
     }
 </script>
 
