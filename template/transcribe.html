@@ -73,28 +73,34 @@
     function copyAndDownload() {
         // Copy the transcript to clipboard
         var textarea = document.querySelector('textarea');
-        textarea.select();
-        document.execCommand('copy');
 
-        // Use SweetAlert to display a custom alert popup
-        Swal.fire({
-            title: 'Transcript Copied!',
-            text: 'The transcript has been copied to the clipboard.',
-            icon: 'success',
-            confirmButtonColor: '#4caf50',
-            confirmButtonText: 'OK'
-        });
+        // Check if the textarea element is found
+        if (textarea) {
+            textarea.select();
+            document.execCommand('copy');
 
-        // Create a Blob containing the transcript text
-        var blob = new Blob([textarea.value], { type: 'text/plain' });
+            // Use SweetAlert to display a custom alert popup
+            Swal.fire({
+                title: 'Transcript Copied!',
+                text: 'The transcript has been copied to the clipboard.',
+                icon: 'success',
+                confirmButtonColor: '#4caf50',
+                confirmButtonText: 'OK'
+            });
 
-        // Create a download link and trigger the download
-        var downloadLink = document.createElement('a');
-        downloadLink.href = window.URL.createObjectURL(blob);
-        downloadLink.download = 'transcript.txt';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
+            // Create a Blob containing the transcript text
+            var blob = new Blob([textarea.value], { type: 'text/plain' });
+
+            // Create a download link and trigger the download
+            var downloadLink = document.createElement('a');
+            downloadLink.href = window.URL.createObjectURL(blob);
+            downloadLink.download = 'transcript.txt';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        } else {
+            console.error('Textarea element not found.');
+        }
     }
 </script>
 
